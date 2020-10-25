@@ -2,11 +2,11 @@
 
 #include <SDL2/SDL.h>
 
-Game::Game(int, int) {
+Game::Game(std::size_t Grid_Width, std::size_t Grid_Height) : Grid_Width(Grid_Width), Grid_Height(Grid_Height) {
 
 }
 
-void Game::Run() {
+void Game::Run(Renderer& renderer) {
     Uint32 Title_Timestamp = SDL_GetTicks();
     Uint32 Frame_Start;
     Uint32 Frame_End;
@@ -22,7 +22,7 @@ void Game::Run() {
 
         Update(running);
 
-        // renderer.Render();
+        renderer.Render();
 
         Frame_End = SDL_GetTicks();
 
