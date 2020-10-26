@@ -15,12 +15,12 @@ class Renderer {
 public:
     Renderer(std::size_t, std::size_t);
     ~Renderer();
-    void Render(std::unique_ptr<Player>, std::unique_ptr<Bullet>, std::vector<std::unique_ptr<Brick>>);
+    void Render(std::shared_ptr<Player>, std::shared_ptr<Bullet>, std::vector<std::shared_ptr<Brick>>&);
     void UpdateWindowTitle(unsigned int&);
 private:
-    void RenderPlayer(std::unique_ptr<Player>);
-    void RenderBullet(std::unique_ptr<Bullet>);
-    void RenderBrick(std::unique_ptr<Brick>);
+    void RenderPlayer(std::shared_ptr<Player>);
+    void RenderBullet(std::shared_ptr<Bullet>);
+    void RenderBrick(std::shared_ptr<Brick>);
 
     SDL_Window* window;
     SDL_Renderer* renderer;

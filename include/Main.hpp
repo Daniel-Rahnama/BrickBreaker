@@ -7,7 +7,7 @@
 const unsigned int Screen_Width = 800;
 const unsigned int Screen_Height = 800;
 const unsigned int Target_FPS = 60;
-const unsigned int Target_Frame_Duration = 60 / 1000;
+const unsigned int Target_Frame_Duration = Target_FPS / 1000;
 
 int main();
 

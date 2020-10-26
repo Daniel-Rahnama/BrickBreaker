@@ -5,7 +5,7 @@ int main() {
 
     Renderer renderer(Screen_Width, Screen_Height);
 
-    Game.Run();
+    game.Run(renderer);
 
     return 0;
 }
