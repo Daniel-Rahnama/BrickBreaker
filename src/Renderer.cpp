@@ -28,7 +28,7 @@ Renderer::~Renderer() {
     SDL_Quit();
 }
 
-void Renderer::Render(std::shared_ptr<Player> player, std::shared_ptr<Bullet> bullet, std::vector<std::shared_ptr<Brick>>& bricks) {
+void Renderer::Render(std::shared_ptr<Player>& player, std::shared_ptr<Bullet>& bullet, std::vector<std::shared_ptr<Brick>>& bricks) {
     SDL_SetRenderDrawColor(renderer, 0x1E, 0x1E, 0x1E, 0xFF);
     SDL_RenderClear(renderer);
 
@@ -40,8 +40,10 @@ void Renderer::Render(std::shared_ptr<Player> player, std::shared_ptr<Bullet> bu
 
     for (std::shared_ptr<Brick>& brick : bricks) 
         futures.emplace_back(std::async(&Renderer::RenderBrick, this, brick));
+    
+    for (std::future<void>& f : futures) f.wait();
 
-    for (std::future<void>& future : futures) future.wait();
+    SDL_RenderPresent(renderer);
 }
 
 void Renderer::RenderPlayer(std::shared_ptr<Player> player) {

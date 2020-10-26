@@ -15,7 +15,7 @@ class Renderer {
 public:
     Renderer(std::size_t, std::size_t);
     ~Renderer();
-    void Render(std::shared_ptr<Player>, std::shared_ptr<Bullet>, std::vector<std::shared_ptr<Brick>>&);
+    void Render(std::shared_ptr<Player>&, std::shared_ptr<Bullet>&, std::vector<std::shared_ptr<Brick>>&);
     void UpdateWindowTitle(unsigned int&);
 private:
     void RenderPlayer(std::shared_ptr<Player>);

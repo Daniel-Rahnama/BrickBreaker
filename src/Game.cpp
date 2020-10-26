@@ -1,6 +1,8 @@
 #include "../include/Game.hpp"
 
-#include <SDL2/SDL.h>
+#include "SDL2/SDL.h"
+
+#include <iostream>
 
 Game::Game(std::size_t Grid_Width, std::size_t Grid_Height) : Grid_Width(Grid_Width), Grid_Height(Grid_Height) {
     player = std::make_shared<Player>(50, 50);
