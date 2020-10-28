@@ -55,7 +55,7 @@ void Game::Run(Renderer& renderer, Controller& controller, const float& Target_F
     else std::cout << "You Lose!" << std::endl;
 }
 
-void Game::Update(bool& running, bool& win) {
+void Game::Update(bool& running, bool& won) {
     bullet->Update();
     
     for (std::shared_ptr<Brick>& b : bricks) {
@@ -66,7 +66,10 @@ void Game::Update(bool& running, bool& win) {
 
     if (!bricks.empty()) bricks.erase(std::remove_if(bricks.begin(), bricks.end(), [](std::shared_ptr<Brick> b) { return !b->Alive(); }), bricks.end());
 
-    if (bricks.empty()) running = false;
+    if (bricks.empty()) {
+        running = false;
+        won = true;
+    } 
 
     if (!bullet->Alive()) {
         running = false;
