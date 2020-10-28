@@ -1,8 +1,8 @@
 #include "../include/Brick.hpp" 
 
 Brick::Brick(int x, int y) {
-    w = 50;
-    h = 50;
+    w = 25;
+    h = 25;
     this->x = x;
     this->y = y;
 

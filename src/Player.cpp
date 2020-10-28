@@ -4,7 +4,7 @@ Player::Player(int x, int y) {
     this->x = x;
     this->y = y;
 
-    this->w = 50;
+    this->w = 100;
     this->h = 10;
 }
 
@@ -23,6 +23,6 @@ void Player::CollisionDetection(std::shared_ptr<Bullet> bullet) {
 
     if (x1 <= bx2 && x2 >= bx1 && y1 <= by2 && y2 >= by1) {
         int distance = bullet->x - x;
-        bullet->angle = (360 + (distance * 1.5));
+        bullet->angle = (360 + (distance * 0.75));
     }
 }
