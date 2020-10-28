@@ -1,9 +1,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "Main.hpp"
-
 #include "Renderer.hpp"
+#include "Controller.hpp"
 
 #include "Player.hpp"
 #include "Bullet.hpp"
@@ -15,9 +14,9 @@
 class Game {
 public:
     Game(std::size_t, std::size_t);
-    void Run(Renderer&);
+    void Run(Renderer&, Controller&,const float&);
 private:
-    void Update(bool&);
+    void Update(bool&, bool&);
 
     std::shared_ptr<Player> player;
     std::shared_ptr<Bullet> bullet;

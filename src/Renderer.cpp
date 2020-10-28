@@ -47,45 +47,45 @@ void Renderer::Render(std::shared_ptr<Player>& player, std::shared_ptr<Bullet>& 
 }
 
 void Renderer::RenderPlayer(std::shared_ptr<Player> player) {
-    SDL_Rect* rect;
+    SDL_Rect rect;
 
-    rect->h = player->H();
-    rect->w = player->W();
-    rect->x = player->X();
-    rect->y = player->Y();
+    rect.h = player->H();
+    rect.w = player->W();
+    rect.x = player->X();
+    rect.y = player->Y();
 
     std::lock_guard<std::mutex> lock(RenderMtx);
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    SDL_RenderFillRect(renderer, rect);
+    SDL_RenderFillRect(renderer, &rect);
 }
 
 void Renderer::RenderBullet(std::shared_ptr<Bullet> bullet) {
-    SDL_Rect* rect;
+    SDL_Rect rect;
 
-    rect->h = bullet->H();
-    rect->w = bullet->W();
-    rect->x = bullet->X();
-    rect->y = bullet->Y();
+    rect.h = bullet->H();
+    rect.w = bullet->W();
+    rect.x = bullet->X();
+    rect.y = bullet->Y();
 
     std::lock_guard<std::mutex> lock(RenderMtx);
     SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
-    SDL_RenderFillRect(renderer, rect);
+    SDL_RenderFillRect(renderer, &rect);
 }
 
 void Renderer::RenderBrick(std::shared_ptr<Brick> brick) {
-    SDL_Rect* rect;
+    SDL_Rect rect;
 
-    rect->h = brick->H();
-    rect->w = brick->W();
-    rect->x = brick->X();
-    rect->y = brick->Y();
+    rect.h = brick->H();
+    rect.w = brick->W();
+    rect.x = brick->X();
+    rect.y = brick->Y();
 
     std::lock_guard<std::mutex> lock(RenderMtx);
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0xFF, 0xFF);
-    SDL_RenderFillRect(renderer, rect);
+    SDL_RenderFillRect(renderer, &rect);
 }
 
 void Renderer::UpdateWindowTitle(unsigned int& FPS) {
-    std::string title = "BrickBreaker FPS: " + FPS;
+    std::string title = "BrickBreaker FPS: " + std::to_string(FPS);
     SDL_SetWindowTitle(window, title.c_str());
 }

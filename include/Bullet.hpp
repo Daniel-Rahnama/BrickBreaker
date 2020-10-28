@@ -7,11 +7,13 @@ class Bullet : public Entity {
 public:
     Bullet(int, int);
     double Angle();
-    bool Moving();
+    void Update();
+    bool Alive();
 private:
     double angle;
-    bool moving;
     bool alive;
+    friend class Brick;
+    friend class Player;
 };
 
 #endif /* BULLET_HPP */
