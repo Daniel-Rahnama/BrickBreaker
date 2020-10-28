@@ -41,7 +41,6 @@ void Game::Run(Renderer& renderer, Controller& controller, const float& Target_F
 
         if (Frame_End - Title_Timestamp >= 1000) {
             renderer.UpdateWindowTitle(Frame_Count);
-            std::cout << Frame_Count << std::endl;
             Frame_Count = 0;
             Title_Timestamp = Frame_End;
         }
